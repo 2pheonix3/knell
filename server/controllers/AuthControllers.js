@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma , PrismaClient } from "@prisma/client";
 import { genSalt, hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -73,3 +73,29 @@ export const login = async (req, res, next) => {
     return res.status(500).send("Internal server error.");
   }
 };
+
+export const getUserInfo=async (req,res,next)=>{
+  try {
+    if (req?.userId) {
+      const prisma = new PrismaClient();
+      const user = await prisma.user.findUnique({
+        where: {
+          id: req.userId,
+        },
+      });
+      return res.status(200).json({
+        user: {
+          id: user?.id,
+          email: user?.email,
+          image: user?.profileImage,
+          username: user?.username,
+          fullName: user?.fullName,
+          description: user?.description,
+          isProfileSet: user?.isProfileInfoSet,
+        },
+      });
+    }
+  } catch (err) {
+    res.status(500).send("Internal Server Occured");
+  }
+}
