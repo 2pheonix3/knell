@@ -8,7 +8,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import Image from 'next/image';
 import { reducerCases } from '@/context/constants';
 import { useStateProvider } from '@/context/StateContext';
-import KnellLogo from './knellLogo';
+import KnellLogo from './KnellLogo';
 // import ContextMenu
 
 const Navbar = () => {
