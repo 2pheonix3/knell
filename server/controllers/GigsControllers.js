@@ -68,4 +68,76 @@ export const addGig = async (req, res, next) => {
       return res.status(500).send("Internal Server Error");
     }
   };
+
+  export const getGigData = async (req, res, next) => {
+    try {
+      if (req.params.gigid) {
+        const prisma = new PrismaClient();
+        const gig=await prisma.gigs.findUnique({
+          where:{id:parseInt(req.params.gigid)}
+        })
+        return res.status(200).json({ gig});
+      }
+      return res.status(400).send("GigId should be required.");
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    }
+  };
+
+  export const editGig = async (req, res, next) => {
+    try {
+      if (req.files) {
+        const fileKeys = Object.keys(req.files);
+        const fileNames = [];
+        fileKeys.forEach((file) => {
+          const date = Date.now();
+          renameSync(
+            req.files[file].path,
+            "uploads/" + date + req.files[file].originalname
+          );
+          fileNames.push(date + req.files[file].originalname);
+        });
+        if (req.query) {
+          const {
+            title,
+            description,
+            category,
+            features,
+            price,
+            revisions,
+            time,
+            shortDesc,
+          } = req.query;
+          const prisma = new PrismaClient();
+          const oldData = await prisma.gigs.findUnique({
+            where: { id: parseInt(req.params.gigid) },
+          });
+          await prisma.gigs.update({
+            where: { id: parseInt(req.params.gigid) },
+            data: {
+              title,
+              description,
+              deliveryTime: parseInt(time),
+              category,
+              features,
+              price: parseInt(price),
+              shortDesc,
+              revisions: parseInt(revisions),
+              createdBy: { connect: { id: parseInt(req.userId) } },
+              images: fileNames,
+            },
+          });
+          oldData?.images.forEach((image) => {
+            if (existsSync(`uploads/${image}`)) unlinkSync(`uploads/${image}`);
+          });
   
+          return res.status(201).send("Successfully Eited the gig.");
+        }
+      }
+      return res.status(400).send("All properties should be required.");
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    }
+  };
