@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/AuthRoutes.js";
 import { gigsRoutes } from "./routes/GigsRoutes.js";
+import { orderRoutes } from "./routes/OrderRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigsRoutes);
+app.use("/api/order", orderRoutes);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
