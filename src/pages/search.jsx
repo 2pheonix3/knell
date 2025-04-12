@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/router";
 import axios from "axios";
-import { SEARCH_GIGS_ROUTE } from '@/utils/constants';
-import SearchGridItem from '@/components/search/SearchGridItem';
+import { SEARCH_GIGS_ROUTE } from '../utils/constants';
+import SearchGridItem from '../components/search/SearchGridItem';
 
 const Search = () => {
     const router = useRouter();

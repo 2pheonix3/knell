@@ -1,11 +1,12 @@
 import Footer from "@/components/Footer";
-import "@/styles/globals.css";
+import "../styles/globals.css"
 import { useEffect } from "react";
 import { StateProvider } from "../context/StateContext";
 import reducer, { initialState } from "../context/StateReducers";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Navbar from "../components/Navbar";
 
 export default function App({ Component, pageProps }) {
     const router=useRouter()

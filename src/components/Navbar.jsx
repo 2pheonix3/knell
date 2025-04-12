@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
-import { GET_USER_INFO, HOST } from '@/utils/constants';
+import { GET_USER_INFO, HOST } from '../utils/constants';
 import { IoSearchOutline } from "react-icons/io5";
 import Image from 'next/image';
-import { reducerCases } from '@/context/constants';
-import { useStateProvider } from '@/context/StateContext';
+import { reducerCases } from '../context/constants';
+import { useStateProvider } from '../context/StateContext';
 import KnellLogo from './KnellLogo';
 // import ContextMenu
 

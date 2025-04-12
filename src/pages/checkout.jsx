@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/router";
 import axios from "axios";
-import CheckoutForm from '@/components/CheckoutForm';
+import CheckoutForm from '../components/CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
-import { CREATE_ORDER } from '@/utils/constants';
+import { CREATE_ORDER } from '../utils/constants';
 import { Elements } from '@stripe/react-stripe-js';
 
 const stripePromise = loadStripe("pk_test_51RAmJsRuVkCh9ZeNvipD2I9xufgZDlWn1XTT8GmEgaWvFoCSvF0oN8mhCBdrOeneam9Qw47HAd6L29tZxI1jCOWU00je0EOQNX");

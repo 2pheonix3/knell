@@ -1,9 +1,9 @@
 import ImageUpload from '@/components/ImageUpload';
-import { categories } from '@/utils/categories';
+import { categories } from '../../../utils/categories';
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import axios from "axios";
-import { ADD_GIG_ROUTE } from '@/utils/constants';
+import { ADD_GIG_ROUTE } from '../../../utils/constants';
 import { useRouter } from "next/router";
 
 const Create = () => {
@@ -42,7 +42,8 @@ const Create = () => {
   };
   const addGig = async () => {
     const { category, description, price, revisions, time, title, shortDesc } =
-      data;
+    data;
+    console.log(data)
     if (
       category &&
       description &&
@@ -74,6 +75,7 @@ const Create = () => {
         },
         params: gigData,
       });
+      // console.log(response.status)
       if (response.status === 201) {
         router.push("/seller/gigs");
       }

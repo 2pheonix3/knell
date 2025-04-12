@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import { categories } from "@/utils/categories";
+import { categories } from "../../utils/categories";
 
 function Services() {
     const router = useRouter();

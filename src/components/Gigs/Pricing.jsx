@@ -60,7 +60,7 @@ const Pricing = () => {
                 </button>
               )}
             </div>
-            {gigData.userId !== userInfo.id && (
+            {gigData.userId !== userInfo?.id && (
               <div className="flex items-center justify-center mt-5">
                 <button className=" w-5/6 hover:bg-[#74767e] py-1 border border-[#74767e] px-5 text-[#6c6d75] hover:text-white transition-all duration-300 text-lg rounded font-bold">
                   Contact Me

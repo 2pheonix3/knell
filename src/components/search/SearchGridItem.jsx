@@ -2,34 +2,35 @@ import React from 'react'
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { HOST } from '@/utils/constants';
+// import { HOST } from "../utils/constants.js";
+import { HOST } from '../../utils/constants';
 
 const SearchGridItem = ({gig}) => {
     const router = useRouter();
-    // const calculateRatings = () => {
-    //   const { reviews } = gig;
-    //   let rating = 0;
-    //   if (!reviews?.length) {
-    //     return 0;
-    //   }
-    //   reviews?.forEach((review) => {
-    //     rating += review.rating;
-    //   });
-    //   return (rating / reviews.length).toFixed(1);
-    // };
+    const calculateRatings = () => {
+      const { reviews } = gig;
+      let rating = 0;
+      if (!reviews?.length) {
+        return 0;
+      }
+      reviews?.forEach((review) => {
+        rating += review.rating;
+      });
+      return (rating / reviews.length).toFixed(1);
+    };
     return (
       <div
         className="max-w-[300px] flex flex-col gap-2 p-1 cursor-pointer mb-8"
         onClick={() => router.push(`/gig/${gig.id}`)}
       >
-        {/* <div className="relative w-64 h-40">
+        <div className="relative w-64 h-40">
           <Image
             src={`${IMAGES_URL}/${gig.images[0]}`}
             alt="gig"
             fill
             className="rounded-xl"
           />
-        </div> */}
+        </div>
         <div className="flex items-center gap-2">
           <div>
             {gig.createdBy.profileImage ? (
@@ -55,13 +56,13 @@ const SearchGridItem = ({gig}) => {
         <div>
           <p className="line-clamp-2 text-[#404145]">{gig.title}</p>
         </div>
-        {/* <div className="flex items-center gap-1 text-yellow-400">
+        <div className="flex items-center gap-1 text-yellow-400">
           <FaStar />
           <span>
             <strong className="font-medium">{calculateRatings()}</strong>
           </span>
           <span className="text-[#74767e]">({gig.reviews.length})</span>
-        </div> */}
+        </div>
         <div>
           <strong className="font-medium">From ${gig.price}</strong>
         </div>

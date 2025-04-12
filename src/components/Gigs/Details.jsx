@@ -1,11 +1,13 @@
 import { useStateProvider } from '@/context/StateContext';
-import { HOST } from '@/utils/constants';
+import { HOST } from '../../utils/constants';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { FaStar } from 'react-icons/fa';
+import Reviews from './Reviews';
+import AddReview from './AddReview';
 
 const Details = () => {
-    const [{ gigData}] = useStateProvider();
+    const [{ gigData,hasOrdered}] = useStateProvider();
     const [currentImage, setCurrentImage] = useState("");
   
     useEffect(() => {
@@ -14,14 +16,14 @@ const Details = () => {
       }
     }, [gigData]);
   
-    // const [averageRatings, setAverageRatings] = useState("0");
-    // useEffect(() => {
-    //   if (gigData && gigData.reviews.length) {
-    //     let avgRating = 0;
-    //     gigData.reviews.forEach(({ rating }) => (avgRating += rating));
-    //     setAverageRatings((avgRating / gigData.reviews.length).toFixed(1));
-    //   }
-    // }, [gigData]);
+    const [averageRatings, setAverageRatings] = useState("0");
+    useEffect(() => {
+      if (gigData && gigData.reviews.length) {
+        let avgRating = 0;
+        gigData.reviews.forEach(({ rating }) => (avgRating += rating));
+        setAverageRatings((avgRating / gigData.reviews.length).toFixed(1));
+      }
+    }, [gigData]);
   
     return (
       <>
@@ -60,16 +62,16 @@ const Details = () => {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <FaStar
                       key={star}
-                    //   className={`cursor-pointer ${
-                    //     Math.ceil(averageRatings) >= star
-                    //       ? "text-yellow-400"
-                    //       : "text-gray-300"
-                    //   }`}
+                      className={`cursor-pointer ${
+                        Math.ceil(averageRatings) >= star
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }`}
                     />
                   ))}
                 </div>
-                {/* <span className="text-yellow-500">{averageRatings}</span> */}
-                {/* <span className="text-[#27272a]">({gigData.reviews.length})</span> */}
+                <span className="text-yellow-500">{averageRatings}</span>
+                <span className="text-[#27272a]">({gigData.reviews.length})</span>
               </div>
             </div>
             <div className="flex flex-col gap-4">
@@ -147,11 +149,11 @@ const Details = () => {
                       {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar
                           key={star}
-                        //   className={`cursor-pointer ${
-                        //     Math.ceil(gigData.averageRating) >= star
-                        //       ? "text-yellow-400"
-                        //       : "text-gray-300"
-                        //   }`}
+                          className={`cursor-pointer ${
+                            Math.ceil(gigData.averageRating) >= star
+                              ? "text-yellow-400"
+                              : "text-gray-300"
+                          }`}
                         />
                       ))}
                     </div>
@@ -159,14 +161,14 @@ const Details = () => {
                       {/* {gigData.averageRating} */}
                     </span>
                     <span className="text-[#74767e]">
-                      {/* ({gigData.totalReviews}) */}
+                      ({gigData.totalReviews})
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <Reviews /> */}
-            {/* {hasOrdered && <AddReview />} */}
+            <Reviews />
+            {hasOrdered && <AddReview />}
           </div>
         )}
       </>

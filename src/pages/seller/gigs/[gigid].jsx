@@ -1,11 +1,11 @@
 import ImageUpload from '@/components/ImageUpload';
-import { categories } from '@/utils/categories';
+import { categories } from '../../../utils/categories';
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie';
 import axios from "axios";
-import { EDIT_GIG_DATA, GET_GIG_DATA } from '@/utils/constants';
+import { EDIT_GIG_DATA, GET_GIG_DATA } from '../../../utils/constants';
 import { useRouter } from "next/router";
-import { HOST } from '@/context/constants';
+import { HOST } from '../../../context/constants';
 
 const Editgig = () => {
   const [cookies] = useCookies();
