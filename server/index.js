@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/AuthRoutes.js";
 import { gigsRoutes } from "./routes/GigsRoutes.js";
 import { orderRoutes } from "./routes/OrderRoutes.js";
+import { messageRoutes } from "./routes/MessagesRoutes.js";
+import { dashboardRoutes } from "./routes/DashboardRoutes.js";
 
 dotenv.config();
 
@@ -28,6 +30,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigsRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);

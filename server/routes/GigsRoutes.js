@@ -13,4 +13,5 @@ gigsRoutes.get("/get-gig-data/:gigid", getGigData);
 gigsRoutes.put("/edit-gig/:gigid", verifyToken,upload.array("images"),editGig);
 gigsRoutes.get("/search-gigs",searchGigs)
 gigsRoutes.get("/check-gig-order/:gigId",verifyToken,checkGigOrder)
-gigsRoutes.get("/add-review/:gigId",verifyToken,addReview)
+gigsRoutes.post("/add-review/:gigId",verifyToken,addReview)
+// gigRoutes.post("/add-review/:gigId",verifyToken,addReview);

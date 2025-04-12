@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { reducerCases } from '../context/constants';
 import { useStateProvider } from '../context/StateContext';
 import KnellLogo from './KnellLogo';
+import ContextMenu from './ContextMenu';
 // import ContextMenu
 
 const Navbar = () => {
@@ -129,7 +130,39 @@ const Navbar = () => {
     }
   }, [cookies, userInfo, dispatch]);
 
+  useEffect(() => {
+    const clickListener = (e) => {
+      e.stopPropagation();
 
+      if (isContextMenuVisible) setIsContextMenuVisible(false);
+    };
+    if (isContextMenuVisible) {
+      window.addEventListener("click", clickListener);
+    }
+    return () => {
+      window.removeEventListener("click", clickListener);
+    };
+  }, [isContextMenuVisible]);
+  const ContextMenuData = [
+    {
+      name: "Profile",
+      callback: (e) => {
+        e.stopPropagation();
+
+        setIsContextMenuVisible(false);
+        router.push("/profile");
+      },
+    },
+    {
+      name: "Logout",
+      callback: (e) => {
+        e.stopPropagation();
+
+        setIsContextMenuVisible(false);
+        router.push("/logout");
+      },
+    },
+  ];
 
 
 

@@ -11,13 +11,14 @@ function AddReview() {
   const [{}, dispatch] = useStateProvider();
   const [data, setData] = useState({ reviewText: "", rating: 0 });
   const router = useRouter();
-  const { gigId } = router.query;
+  const { gigid } = router.query;
   // console.log(gigId)
   const addReview = async () => {
     try {
       console.log(data)
+      console.log(gigid)
       const response = await axios.post(
-        `${ADD_REVIEW}/${gigId}`,
+        `${ADD_REVIEW}/${gigid}`,
         { ...data },
         { withCredentials: true }
       );
