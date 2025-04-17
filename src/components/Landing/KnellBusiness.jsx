@@ -1,14 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import { BsCheckCircle } from "react-icons/bs";
-import KnellLogo from "../KnellLogo"; // Ensure proper PascalCase
+// import KnellLogo from "../KnellLogo"; // Ensure proper PascalCase
+import img from "../unnamed 1.svg"
 
 function KnellBusiness() {
     return (
         <div className="bg-[#0d084d] px-20 py-16 flex gap-10">
             <div className="text-white flex flex-col gap-6 justify-center items-start">
                 <div className="flex gap-2">
-                    <KnellLogo fillColor={"#ffffff"} />
+                <Image
+                    src={img}
+                    // className="absolute left-4"
+                    className="rounded-full"
+                    alt = "Knell"
+                    width={50}
+                    height={50}
+                  />
                     <span className="text-white text-3xl font-bold">Business</span>
                 </div>
                 <h2 className="text-3xl font-bold">A solution for networking individuals</h2>

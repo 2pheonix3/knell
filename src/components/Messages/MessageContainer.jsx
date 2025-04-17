@@ -25,6 +25,12 @@ function MessageContainer() {
     }
   }, [orderId, userInfo]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  };
+
   function formatTime(timestamp) {
     const date = new Date(timestamp);
     let hours = date.getHours();
@@ -97,6 +103,7 @@ function MessageContainer() {
               name="message"
               onChange={(e) => setMessageText(e.target.value)}
               value={messageText}
+              onKeyDown={handleKeyDown}
             />
             <button
               type="submit"

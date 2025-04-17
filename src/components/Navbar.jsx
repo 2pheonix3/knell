@@ -8,7 +8,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import Image from 'next/image';
 import { reducerCases } from '../context/constants';
 import { useStateProvider } from '../context/StateContext';
-import KnellLogo from './KnellLogo';
+import img from './unnamed 1.svg'
 import ContextMenu from './ContextMenu';
 // import ContextMenu
 
@@ -34,6 +34,12 @@ const Navbar = () => {
       type: reducerCases.TOGGLE_LOGIN_MODAL,
       showLoginModal: true,
     });
+  }
+
+  const handler=(event)=>{
+    if(event.key=="Enter"){
+      router.push(`/search?q=${searchData}`);
+    }
   }
 
   const handleSignup=()=>{
@@ -176,12 +182,17 @@ const Navbar = () => {
               : "absolute bg-transparent border-transparent"
           }`}
         >
-          <div>
-            <Link href="/">
-              <KnellLogo
-                fillColor={!navFixed && !userInfo ? "#ffffff" : "#404145"}
-              />
-            </Link>
+          <div  className={`ml-6 w-[50px] h-[50px] rounded-full overflow-hidden` }>
+            {/* <div> */}
+            <Image
+                    src={img}
+                    // className="absolute left-4"
+                    className={`${!navFixed ? "bg-white" : "bg-[#404145]"} rounded-full`}
+                    alt = "Knell"
+                    width={50}
+                    height={50}
+                  />
+
           </div>
           <div
             className={`flex ${
@@ -194,6 +205,7 @@ const Navbar = () => {
               className="w-[30rem] py-2.5 px-4 border"
               value={searchData}
               onChange={(e) => setSearchData(e.target.value)}
+              onKeyDown={handler}
             />
             <button
               className="bg-gray-900 py-1.5 text-white w-16 flex justify-center items-center"

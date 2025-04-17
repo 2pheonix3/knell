@@ -7,8 +7,9 @@ import {
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";
-import KnellLogo from "./KnellLogo";
+import img from "./unnamed 1.svg"
 import { categories } from "../utils/categories";
+import Image from "next/image";
 
 function Footer() {
   const socialLinks = [
@@ -16,22 +17,22 @@ function Footer() {
     {
       name: "Youtube",
       icon: <FiYoutube />,
-      link: "https://www.youtube.com/KishanSheth21/",
+      link: "https://www.youtube.com/@Knell-b5l/",
     },
     {
       name: "LinkedIn",
       icon: <FiLinkedin />,
-      link: "https://www.linkedin.com/in/koolkishan/",
+      link: "https://www.linkedin.com/company/knelldotco/",
     },
     {
       name: "Instagram",
       icon: <FiInstagram />,
-      link: "https://instagram.com/koolkishansheth",
+      link: "https://instagram.com/knell.co.in",
     },
     {
       name: "Twitter",
       icon: <FiTwitter />,
-      link: "https://twitter.com/koolkishansheth",
+      link: "https://twitter.com/knell_co_in",
     },
   ];
   const data = [
@@ -116,7 +117,14 @@ function Footer() {
         })}
       </ul>
       <div className="mt-12 flex items-center justify-between">
-        <KnellLogo fillColor={"#404145"} />
+      <Image
+                    src={img}
+                    // className="absolute left-4"
+                    className="rounded-full"
+                    alt = "Knell"
+                    width={50}
+                    height={50}
+                  />
         <ul className="flex gap-5">
           {socialLinks.map(({ icon, link, name }) => (
             <li
