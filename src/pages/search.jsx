@@ -9,12 +9,14 @@ const Search = () => {
     const { category, q } = router.query;
     const [gigs, setGigs] = useState(undefined);
     useEffect(() => {
+      // console.log(category)
+      const selectedCategory = category || q;
       const getData = async () => {
         try {
           const {
             data: { gigs },
           } = await axios.get(
-            `${SEARCH_GIGS_ROUTE}?searchTerm=${q}&category=${category}`
+            `${SEARCH_GIGS_ROUTE}?searchTerm=${q}&category=${selectedCategory}`
           );
           setGigs(gigs);
         } catch (err) {

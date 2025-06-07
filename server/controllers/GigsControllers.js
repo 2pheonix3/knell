@@ -22,11 +22,9 @@ export const addGig = async (req, res, next) => {
             category,
             features,
             price,
-            // revisions,
             time,
             shortDesc,
           } = req.query;
-          // const prisma = new PrismaClient();
   
           await prisma.gigs.create({
             data: {
@@ -37,7 +35,6 @@ export const addGig = async (req, res, next) => {
               features,
               price: parseInt(price),
               shortDesc,
-              // revisions: parseInt(revisions),
               createdBy: { connect: { id: req.userId } },
               images: fileNames,
             },

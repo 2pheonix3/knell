@@ -64,7 +64,7 @@ const SearchGridItem = ({gig}) => {
           <span className="text-[#74767e]">({gig.reviews.length})</span>
         </div>
         <div>
-          <strong className="font-medium">From ${gig.price}</strong>
+          <strong className="font-medium">From ₹{gig.price}</strong>
         </div>
       </div>
     );

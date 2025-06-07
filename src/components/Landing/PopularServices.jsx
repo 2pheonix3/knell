@@ -58,7 +58,7 @@ function PopularServices() {
                         key={name}
                         className="relative cursor-pointer"
                         onClick={() =>
-                            router.push(`/search?q=${(name || "default").toLowerCase()}`)
+                            router.push(`/search?category=${(name || "default").toLowerCase()}`)
                         }
                     >
                         <div className="absolute z-10 text-white left-5 top-4">
