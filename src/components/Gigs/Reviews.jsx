@@ -84,7 +84,6 @@ function Reviews() {
           </div>
         </div>
       )}
-      <div>hello my nigga</div>
     </>
   );
 }

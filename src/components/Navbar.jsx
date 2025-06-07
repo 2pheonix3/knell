@@ -36,6 +36,10 @@ const Navbar = () => {
     });
   }
 
+  const admin=()=>{
+    router.push("/admin");
+  }
+
   const handler=(event)=>{
     if(event.key=="Enter"){
       router.push(`/search?q=${searchData}`);
@@ -71,8 +75,8 @@ const Navbar = () => {
   };
 
   const links = [
-    { linkName: "Fiverr Business", handler: "#", type: "link" },
-    { linkName: "Explore", handler: "#", type: "link" },
+    // { linkName: "Fiverr Business", handler: "#", type: "link" },
+    { linkName: "Explore", handler: "https://www.instagram.com/knell.co.in/", type: "link" },
     { linkName: "English", handler: "#", type: "link" },
     { linkName: "Become a Seller", handler: "#", type: "link" },
     { linkName: "Sign in", handler: handleLogin, type: "button" },
@@ -184,6 +188,7 @@ const Navbar = () => {
         >
           <div  className={`ml-6 w-[50px] h-[50px] rounded-full overflow-hidden` }>
             {/* <div> */}
+            <button onClick={()=>router.push("/")}>
             <Image
                     src={img}
                     // className="absolute left-4"
@@ -192,6 +197,7 @@ const Navbar = () => {
                     width={50}
                     height={50}
                   />
+            </button>
 
           </div>
           <div
@@ -249,6 +255,14 @@ const Navbar = () => {
             </ul>
           ) : (
             <ul className="flex gap-10 items-center">
+              {userInfo?.email=="akshajvasudeva@gmail.com"?
+              <li
+                className="cursor-pointer text-[#1DBF73] font-medium"
+                onClick={admin}
+              >
+                Admin
+              </li>:
+              <li></li>}
               {isSeller && (
                 <li
                   className="cursor-pointer text-[#1DBF73] font-medium"

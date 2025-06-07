@@ -4,24 +4,24 @@ import { BsCheckCircle } from "react-icons/bs";
 function Everything() {
     const everythingData = [
         {
-            title: "stick to ur budget",
+            title: "Affordable & Reliable Services",
             subtitle:
-            "find right service for evry price point. Hourl;y rates?. provider sets pricing,"
+            "Get quality services at student-friendly prices, provided by skilled students."
         },
         {
-            Title: "Pay when u happy or service completed",
-            subtitle: "upront payment to the provider",
+            title: "Verified Student Professionals",
+            subtitle: "Every service provider is vetted to ensure trust and quality.",
         },
         {
-            Title: "Count on 24/7 support",
-            subtitle: "roumd the clock indian call centres at your convenience",
+            title: "Flexible Scheduling",
+            subtitle: "Book services at your convenience with easy scheduling and real-time updates.",
         },
     ];
     return (
         <div className="bg-[#f1fdf7] flex py-20 justify-between px-24">
             <div>
                 <h2 className="text-4xl mb 5 text-[#404145] font-bold">
-                    The best part? !!RACISM!!
+                    <i>WHY CHOOSE US?</i>
                 </h2>
                 <ul className="flex flex-col gap-10">
                     {everythingData.map(({ title, subtitle}) => {
@@ -38,7 +38,7 @@ function Everything() {
                 </ul>
             </div>
             <div className="relative h-96 w-2/4">
-                <Image src="/everything.webp" fill alt="evrything"/>
+                <Image src="/best_part.webp" fill alt="evrything"/>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import ImageUpload from '@/components/ImageUpload';
+import ImageUpload from '../../../components/ImageUpload';
 import { categories } from '../../../utils/categories';
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie';
@@ -21,7 +21,7 @@ const Editgig = () => {
     category: "",
     description: "",
     time: 0,
-    revisions: 0,
+    // revisions: 0,
     feature: "",
     price: 0,
     shortDesc: "",
@@ -43,7 +43,7 @@ const Editgig = () => {
     }
   };
   const editGig = async () => {
-    const { category, description, price, revisions, time, title, shortDesc } =
+    const { category, description, price, time, title, shortDesc } =
       data;
 
     if (
@@ -54,7 +54,7 @@ const Editgig = () => {
       files.length &&
       price > 0 &&
       shortDesc.length &&
-      revisions > 0 &&
+      // revisions > 0 &&
       time > 0
     ) {
       const formData = new FormData();
@@ -65,7 +65,7 @@ const Editgig = () => {
         category,
         features,
         price,
-        revisions,
+        // revisions,
         time,
         shortDesc,
       };
@@ -95,7 +95,7 @@ const Editgig = () => {
           data: { gig },
         } = await axios.get(`${GET_GIG_DATA}/${gigid}`);
 
-        setData({ ...gig, time: gig.revisions });
+        // setData({ ...gig, time: gig.revisions });
         setfeatures(gig.features);
 
         gig.images.forEach((image) => {
@@ -183,7 +183,7 @@ const Editgig = () => {
               placeholder="Minimum Delivery Time"
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="revision" className={labelClassName}>
               Revisions
             </label>
@@ -196,7 +196,7 @@ const Editgig = () => {
               value={data.revisions}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
         </div>
         <div className="grid grid-cols-2 gap-11">
           <div>

@@ -33,20 +33,23 @@ function Orders() {
               <th scope="col" className="px-6 py-3">
                 Name
               </th>
-              <th scope="col" className="px-6 py-3">
+              {/* <th scope="col" className="px-6 py-3">
                 Category
-              </th>
+              </th> */}
               <th scope="col" className="px-6 py-3">
                 Price
               </th>
-              <th scope="col" className="px-6 py-3">
+              {/* <th scope="col" className="px-6 py-3">
                 Delivery Time
-              </th>
+              </th> */}
               <th scope="col" className="px-6 py-3">
                 Order Date
               </th>
               <th scope="col" className="px-6 py-3">
                 Send Message
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Status
               </th>
             </tr>
           </thead>
@@ -63,9 +66,9 @@ function Orders() {
                   <th scope="row" className="px-6 py-4 font-medium">
                     {order.gig.title}
                   </th>
-                  <td className="px-6 py-4">{order.gig.category}</td>
+                  {/* <td className="px-6 py-4">{order.gig.category}</td> */}
                   <td className="px-6 py-4">{order.price}</td>
-                  <td className="px-6 py-4">{order.gig.deliveryTime}</td>
+                  {/* <td className="px-6 py-4">{order.gig.deliveryTime}</td> */}
                   <td className="px-6 py-4">{order.createdAt.split("T")[0]}</td>
 
                   <td className="px-6 py-4 ">
@@ -76,6 +79,7 @@ function Orders() {
                       Send
                     </Link>
                   </td>
+                  <td className="px-6 py-4">{order.status}</td>
                 </tr>
               );
             })}

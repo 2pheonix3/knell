@@ -100,7 +100,7 @@ function Footer() {
   ];
   return (
     <footer className="w-full  mx-auto px-32 py-16 h-max border-t border-gray-200 bg-gray-100">
-      <ul className="flex justify-between">
+      {/* <ul className="flex justify-between">
         {data.map(({ headerName, links }) => {
           return (
             <li key={headerName} className="flex flex-col gap-2">
@@ -115,7 +115,7 @@ function Footer() {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
       <div className="mt-12 flex items-center justify-between">
       <Image
                     src={img}

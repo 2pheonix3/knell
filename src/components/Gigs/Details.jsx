@@ -1,4 +1,4 @@
-import { useStateProvider } from '@/context/StateContext';
+import { useStateProvider } from '../../context/StateContext';
 import { HOST } from '../../utils/constants';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'

@@ -1,9 +1,10 @@
-import { Prisma , PrismaClient } from "@prisma/client";
+// import { Prisma , PrismaClient } from "@prisma/client";
+import prisma from "../Prisma_client.js";
 import { genSalt, hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 import {renameSync} from "fs"
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 const generatePassword = async (password) => {
   const salt = await genSalt(10);
@@ -18,7 +19,7 @@ const createToken = (email, userId) => {
 
 export const signup = async (req, res, next) => {
   try {
-    const prisma = new PrismaClient();
+    // const prisma = new PrismaClient();
     const { email, password } = req.body;
 
     if(email && password ){
@@ -45,7 +46,7 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const prisma = new PrismaClient();
+    // const prisma = new PrismaClient();
     const { email, password } = req.body;
 
     if(email && password ){
@@ -78,7 +79,7 @@ export const login = async (req, res, next) => {
 export const getUserInfo=async (req,res,next)=>{
   try {
     if (req?.userId) {
-      const prisma = new PrismaClient();
+      // const prisma = new PrismaClient();
       const user = await prisma.user.findUnique({
         where: {
           id: req.userId,
@@ -106,7 +107,7 @@ export const setUserInfo = async (req, res, next) => {
     if (req?.userId) {
       const { userName, fullName, description } = req.body;
       if (userName && fullName && description) {
-        const prisma = new PrismaClient();
+        // const prisma = new PrismaClient();
         const userNameValid = await prisma.user.findUnique({
           where: { username: userName },
         });
@@ -148,7 +149,7 @@ export const setUserImage = async (req, res, next) => {
         const date = Date.now();
         let fileName = "uploads/profiles/" + date + req.file.originalname;
         renameSync(req.file.path, fileName);
-        const prisma = new PrismaClient();
+        // const prisma = new PrismaClient();
 
         await prisma.user.update({
           where: { id: req.userId },

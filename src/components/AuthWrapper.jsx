@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { MdFacebook } from "react-icons/md";
 import { useRouter } from "next/router";
-import { useStateProvider } from "@/context/StateContext";
+import { useStateProvider } from "../context/StateContext";
 import { useCookies } from "react-cookie";
 import { reducerCases } from "../context/constants";
 
@@ -57,10 +57,10 @@ function AuthWrapper({ type }) {
         >
           <div className="flex flex-col justify-center items-center p-8 gap-7">
             <h3 className="text-2xl font-semibold text-slate-700">
-              {type === "login" ? "Login" : "Sign"}
-              in to Knell
+              {type === "login" ? "Login " : "Sign in "}
+              to Knell
             </h3>
-            <div className="flex flex-col gap-5">
+            {/* <div className="flex flex-col gap-5">
               <button className="text-white bg-blue-500 p-3 font-semibold w-80 flex items-center justify-center relative">
                 <MdFacebook className="absolute left-4 text-2xl" />
                 Continue with Facebook
@@ -69,12 +69,12 @@ function AuthWrapper({ type }) {
                 <FcGoogle className="absolute left-4 text-2xl" />
                 Continue with Google
               </button>
-            </div>
-            <div className="relative w-full text-center">
+            </div> */}
+            {/* <div className="relative w-full text-center">
               <span className="before:content-[''] before:h-[0.5px] before:w-80 before:absolute before:top-[50%] before:left-0 before:bg-slate-400">
                 <span className="bg-white relative z-10 px-2">OR</span>
               </span>
-            </div>
+            </div> */}
             <div className="flex flex-col gap-5">
               <input
                 type="text"

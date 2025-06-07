@@ -1,8 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import prisma from "../Prisma_client.js";
 
 export const addMessage = async (req, res, next) => {
   try {
-    const prisma = new PrismaClient();
+    // const prisma = new PrismaClient();
 
     if (
       req.userId &&
@@ -45,7 +46,7 @@ export const addMessage = async (req, res, next) => {
 export const getMessages = async (req, res, next) => {
   try {
     if (req.params.orderId && req.userId) {
-      const prisma = new PrismaClient();
+      // const prisma = new PrismaClient();
       const messages = await prisma.message.findMany({
         where: {
           order: {
@@ -88,7 +89,7 @@ export const getMessages = async (req, res, next) => {
 export const getUnreadMessages = async (req, res, next) => {
   try {
     if (req.userId) {
-      const prisma = new PrismaClient();
+      // const prisma = new PrismaClient();
       const messages = await prisma.message.findMany({
         where: {
           recipientId: req.userId,
@@ -110,7 +111,7 @@ export const getUnreadMessages = async (req, res, next) => {
 export const markAsRead = async (req, res, next) => {
   try {
     if (req.userId && req.params.messageId) {
-      const prisma = new PrismaClient();
+      // const prisma = new PrismaClient();
       await prisma.message.update({
         where: { id: parseInt(req.params.messageId) },
         data: { isRead: true },

@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import prisma from "../Prisma_client.js";
 import { existsSync, renameSync, unlinkSync } from "fs";
 
 export const addGig = async (req, res, next) => {
@@ -21,11 +22,11 @@ export const addGig = async (req, res, next) => {
             category,
             features,
             price,
-            revisions,
+            // revisions,
             time,
             shortDesc,
           } = req.query;
-          const prisma = new PrismaClient();
+          // const prisma = new PrismaClient();
   
           await prisma.gigs.create({
             data: {
@@ -36,7 +37,7 @@ export const addGig = async (req, res, next) => {
               features,
               price: parseInt(price),
               shortDesc,
-              revisions: parseInt(revisions),
+              // revisions: parseInt(revisions),
               createdBy: { connect: { id: req.userId } },
               images: fileNames,
             },
@@ -55,7 +56,7 @@ export const addGig = async (req, res, next) => {
   export const getUserAuthGigs = async (req, res, next) => {
     try {
       if (req.userId) {
-        const prisma = new PrismaClient();
+        // const prisma = new PrismaClient();
         const user = await prisma.user.findUnique({
           where: { id: req.userId },
           include: { gigs: true },
@@ -68,11 +69,11 @@ export const addGig = async (req, res, next) => {
       return res.status(500).send("Internal Server Error");
     }
   };
-
+  
   export const getGigData = async (req, res, next) => {
     try {
       if (req.params.gigid) {
-        const prisma = new PrismaClient();
+        // const prisma = new PrismaClient();
         const gig=await prisma.gigs.findUnique({
           where:{id:parseInt(req.params.gigid)},
           include: {
@@ -113,11 +114,11 @@ export const addGig = async (req, res, next) => {
             category,
             features,
             price,
-            revisions,
+            // revisions,
             time,
             shortDesc,
           } = req.query;
-          const prisma = new PrismaClient();
+          // const prisma = new PrismaClient();
           const oldData = await prisma.gigs.findUnique({
             where: { id: parseInt(req.params.gigid) },
           });
@@ -131,7 +132,7 @@ export const addGig = async (req, res, next) => {
               features,
               price: parseInt(price),
               shortDesc,
-              revisions: parseInt(revisions),
+              // revisions: parseInt(revisions),
               createdBy: { connect: { id: parseInt(req.userId) } },
               images: fileNames,
             },
@@ -153,7 +154,7 @@ export const addGig = async (req, res, next) => {
   export const searchGigs = async (req, res, next) => {
     try {
       if (req.query.searchTerm || req.query.category) {
-        const prisma = new PrismaClient();
+        // const prisma = new PrismaClient();
         // console.log(req.query.searchTerm," ")
         // console.log(req.query.category," ")
         const gigs = await prisma.gigs.findMany(
@@ -197,12 +198,12 @@ export const addGig = async (req, res, next) => {
 
   const checkOrder = async (userId, gigId) => {
     try {
-      const prisma = new PrismaClient();
+      // const prisma = new PrismaClient();
       const hasUserOrderedGig = await prisma.orders.findFirst({
         where: {
           buyerId: parseInt(userId),
           gigId: parseInt(gigId),
-          isCompleted: true,
+          status: "Completed",
         },
       });
       return hasUserOrderedGig;
@@ -217,7 +218,7 @@ export const addGig = async (req, res, next) => {
         const hasUserOrderedGig = await checkOrder(req.userId, req.params.gigId);
         return res
           .status(200)
-          .json({ hasUserOrderedGig: hasUserOrderedGig ? true : false });
+          .json({ hasUserOrderedGig: (hasUserOrderedGig) ? true : false });
       }
       return res.status(400).send("userId and gigId is required.");
     } catch (err) {
@@ -233,7 +234,7 @@ export const addGig = async (req, res, next) => {
         if (await checkOrder(req.userId, req.params.gigId)) {
           // console.log("req.body.reviewText")
           if (req.body.reviewText && req.body.rating) {
-            const prisma = new PrismaClient();
+            // const prisma = new PrismaClient();
             const newReview = await prisma.reviews.create({
               data: {
                 rating: req.body.rating,
@@ -260,4 +261,44 @@ export const addGig = async (req, res, next) => {
     }
   };
 
-  
+  export const adminData = async (req, res, next) => {
+    // console.log(req)
+    try {
+      if (req.userId) {
+        // console.log(req.userId)
+        const user = await prisma.gigs.findMany({
+          select: {
+            id:true,
+            title: true,
+            category: true,
+        },});
+        // console.log(user.gigs)
+        return res.status(200).json({ gigs: user ?? [] });
+      }
+      return res.status(400).send("UserId of admin should be required.");
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    }
+  };
+
+  export const deletegig = async (req, res, next) => {
+    console.log(req.query.gigId)
+    try {
+      if (req.userId) {
+        // console.log(req.userId)
+        await prisma.gigs.delete({
+          where:{
+            id:parseInt(req.query.gigId),
+          }
+        },);
+        // console.log(user.gigs)
+        // return res.status(200).json({ gigs: user ?? [] });
+        return adminData
+      }
+      return res.status(400).send("UserId should be required.");
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send("Internal Server Error");
+    }
+  };

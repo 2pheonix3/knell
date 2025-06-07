@@ -1,4 +1,4 @@
-import ImageUpload from '@/components/ImageUpload';
+import ImageUpload from '../../../components/ImageUpload';
 import { categories } from '../../../utils/categories';
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
@@ -19,7 +19,7 @@ const Create = () => {
     category: "",
     description: "",
     time: 0,
-    revisions: 0,
+    // revisions: 0,
     feature: "",
     price: 0,
     shortDesc: "",
@@ -41,7 +41,7 @@ const Create = () => {
     }
   };
   const addGig = async () => {
-    const { category, description, price, revisions, time, title, shortDesc } =
+    const { category, description, price, time, title, shortDesc } =
     data;
     console.log(data)
     if (
@@ -52,7 +52,7 @@ const Create = () => {
       files.length &&
       price > 0 &&
       shortDesc.length &&
-      revisions > 0 &&
+      // revisions > 0 &&
       time > 0
     ) {
       const formData = new FormData();
@@ -63,7 +63,7 @@ const Create = () => {
         category,
         features,
         price,
-        revisions,
+        // revisions,
         time,
         shortDesc,
       };
@@ -100,7 +100,7 @@ const Create = () => {
               type="text"
               id="title"
               className={inputClassName}
-              placeholder="e.g. I will do something I'm really good at"
+              placeholder="e.g. social companion, tech support, music companion, etc."
               required
             />
           </div>
@@ -138,7 +138,7 @@ const Create = () => {
         </div>
         <div className="grid grid-cols-2 gap-11">
           <div>
-            <label htmlFor="delivery">Delivery Time</label>
+            <label htmlFor="delivery">Delivery Time(in days)</label>
             <input
               type="number"
               className={inputClassName}
@@ -149,7 +149,7 @@ const Create = () => {
               placeholder="Minimum Delivery Time"
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="revision" className={labelClassName}>
               Revisions
             </label>
@@ -162,7 +162,7 @@ const Create = () => {
               value={data.revisions}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
         </div>
         <div className="grid grid-cols-2 gap-11">
           <div>
@@ -174,7 +174,7 @@ const Create = () => {
                 type="text"
                 id="features"
                 className={inputClassName}
-                placeholder="Enter a Feature Name"
+                placeholder="Extrovert, Good at drums, Gentle"
                 name="feature"
                 value={data.feature}
                 onChange={handleChange}
@@ -232,7 +232,7 @@ const Create = () => {
           </div>
           <div>
             <label htmlFor="price" className={labelClassName}>
-              Gig Price ( $ )
+              Gig Price
             </label>
             <input
               type="number"

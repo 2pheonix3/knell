@@ -72,7 +72,7 @@ function Index() {
                 className="shadow-md h-max p-10 flex flex-col gap-2 cursor-pointer hover:shadow-xl transition-all duration-300"
                 onClick={() => router.push("/seller/orders")}
               >
-                <h2 className="text-xl">Total Orders</h2>
+                <h2 className="text-xl">Completed Bookings</h2>
                 <h3 className="text-[#1DBF73] text-3xl font-extrabold">
                   {dashboardData?.orders}
                 </h3>
@@ -86,7 +86,7 @@ function Index() {
                   {dashboardData?.unreadMessages}
                 </h3>
               </div>
-
+{/* 
               <div className="shadow-md h-max p-10 flex flex-col gap-2 cursor-pointer hover:shadow-xl transition-all duration-300">
                 <h2 className="text-xl">Earnings Today</h2>
                 <h3 className="text-[#1DBF73] text-3xl font-extrabold">
@@ -103,6 +103,13 @@ function Index() {
                 <h2 className="text-xl">Earnings Yearly</h2>
                 <h3 className="text-[#1DBF73] text-3xl font-extrabold">
                   ${dashboardData?.revenue}
+                </h3>
+              </div> */}
+              <div className="shadow-md h-max p-10 flex flex-col gap-2 cursor-pointer hover:shadow-xl transition-all duration-300"
+              onClick={() => router.push("/seller/requests")}>
+                <h2 className="text-xl">Ongoing Bookings</h2>
+                <h3 className="text-[#1DBF73] text-3xl font-extrabold">
+                  {dashboardData?.stat}
                 </h3>
               </div>
             </div>

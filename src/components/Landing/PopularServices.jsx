@@ -6,44 +6,44 @@ function PopularServices() {
     const router = useRouter();
     const popularServicesData = [
         {
-            name: "Ai artists",
-            label: "Add talents to AI",
-            image: "/service1.png",
+            name: "Social Companion",
+            label: "Accompanies You",
+            image: "/aditya.jfif",
         },
         {
-            name: "Logo Design",
-            label: "Build your brand",
-            image: "/service2.jpeg",
+            name: "Study Companion",
+            label: "Academic Come-Back",
+            image: "/eshan.png",
         },
         {
-            name: "WordPress",
-            label: "Customize your site",
-            image: "/service3.jpeg",
+            name: "Dog Walker",
+            label: "woof!! woof!!",
+            image: "/aryan.jfif",
         },
         {
-            name: "Voice Over",
-            label: "Share your message",
-            image: "/service4.jpeg",
+            name: "Gaming Companion",
+            label: "Two of Us!!!",
+            image: "/ded.jfif",
         },
         {
-            name: "Social Media",
-            label: "Reach more audience",
-            image: "/service5.jpeg",
+            name: "Tech Support",
+            label: "Get Your pc fixed",
+            image: "/yasir.png",
         },
         {
-            name: "SEO",
-            label: "Unlock growth online",
-            image: "/service6.jpeg",
+            name: "Music Companion",
+            label: "Lets Jam!!!!!",
+            image: "/music.png",
         },
         {
-            name: "Illustration",
-            label: "Bring your dreams to life",
-            image: "/service7.jpeg",
+            name: "Shopping Companion",
+            label: "Get someone along to bargain with you",
+            image: "/bhains.jfif",
         },
         {
-            name: "Translation",
-            label: "Go global",
-            image: "/service8.jpeg",
+            name: "Dance Companion",
+            label: "Lets Dance",
+            image: "/shreya.jfif",
         },
     ];
 

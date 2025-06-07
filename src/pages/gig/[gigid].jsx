@@ -9,7 +9,7 @@ import React, { useEffect } from 'react'
 
 const Gig = () => {
     const router = useRouter();
-      const {gigid}=router.query
+    const {gigid}=router.query
     // {console.log({gigid})}
     const [{  gigData,userInfo }, dispatch] = useStateProvider();
     useEffect(() => {

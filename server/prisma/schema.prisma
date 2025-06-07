@@ -37,13 +37,12 @@ model Gigs {
   description String
   category String
   deliveryTime Int
-  revisions Int
   features String[]
   price Int
   shortDesc String
   createdAt DateTime @default(now())
   images String[]
-  createdBy User @relation(fields: [userId], references: [id])
+  createdBy User @relation(fields: [userId], references: [id],onDelete: Cascade)
   userId Int
   orders Orders[]
   reviews Reviews[]
@@ -54,9 +53,9 @@ model Orders {
   createdAt DateTime @default(now())
   buyer User @relation(fields: [buyerId],references: [id])
   buyerId Int
-  paymentIntent String @unique
-  isCompleted Boolean @default(false)
-  gig Gigs @relation(fields:[gigId],references: [id])
+  paymentIntent String 
+  status String @default("Request Sent")
+  gig Gigs @relation(fields:[gigId],references: [id],onDelete: Cascade)
   gigId Int
   price Int
   messages Message[]
@@ -67,7 +66,7 @@ model Reviews {
   createdAt DateTime @default(now())
   rating Int
   reviewText String?
-  gig Gigs @relation(fields:[gigId],references: [id])
+  gig Gigs @relation(fields:[gigId],references: [id], onDelete: Cascade)
   gigId Int
   reviewer User @relation(fields: [reviewerId],references: [id])
   reviewerId Int
@@ -82,6 +81,6 @@ model Message {
   senderId Int
   recipient User @relation("receivedMessages", fields: [recipientId], references: [id])
   recipientId Int
-  order Orders @relation(fields: [orderId], references: [id])
+  order Orders @relation(fields: [orderId], references: [id],onDelete: Cascade)
   orderId Int
 }

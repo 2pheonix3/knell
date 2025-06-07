@@ -29,10 +29,11 @@ function HeroBanner() {
                 ))}
             </div>
             <div className="z-1 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-20">
-                <h1 className="text-white text-5xl leading-snug">
-                    Find the perfect &nbsp; <i><br /> Services for your business</i>
+                <h1 className="text-white text-5xl leading-snug" style={{ fontFamily: 'Bobby Jones' ,fontWeight: 'bold'}} >
+                FIND THE PERFECT <i><br />PERSON  FOR YOU</i>
                 </h1>
-                <div className="flex align-middle">
+
+                {/* <div className="flex align-middle">
                     <div className="relative">
                         <input
                             type="text"
@@ -43,15 +44,15 @@ function HeroBanner() {
                     <button className="bg-[#1DBF73] text-white px-12 text-lg font-semibold rounded-r-md">
                         Search
                     </button>
-                </div>
+                </div> */}
                 <div className="text-white flex gap-4">
                     Popular:{" "}
                     <ul className="flex gap-5">
                         <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-                            Website Design
+                            Social Companion
                         </li>
                         <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-                            WordPress
+                            Dance Companinon
                         </li>
                         <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
                             Dog Walker
